@@ -23,7 +23,7 @@ def getlog(request):
 
 
 def getservices(request):
-    client=pymongo.MongoClient("mongodb://192.168.29.103:27017")
+    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db=client['backend']
     collection=db['services']
     service=list(collection.find({},
@@ -53,7 +53,7 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             Email = serializer.validated_data['Email']
             password = serializer.validated_data['password']
 
-            client =  pymongo.MongoClient("mongodb://192.168.29.103:27017")
+            client =  pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
             db = client['backend']
             collection = db['fetch']
             collection.insert_one({'Email':Email,'password':password})
