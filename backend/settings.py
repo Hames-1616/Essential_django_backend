@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-=!e(t^wgg52)*+lg+z%zw$hp^kh%0i(7+m@enb5vpok@sb==be
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    "0.0.0.0:$PORT"
+    "essentialdjangobackend-production.up.railway.app:$PORT"
 ]
 
 
