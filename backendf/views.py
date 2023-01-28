@@ -8,7 +8,7 @@ from rest_framework import viewsets
 from .serializer import EmailPasswordSerializer
 
 def getlog(request):
-    client = pymongo.MongoClient("mongodb://192.168.29.103:27017")
+    client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db = client['backend']
     collection = db['fetch']
     Email_password = list(collection.find({
