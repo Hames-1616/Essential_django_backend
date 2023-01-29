@@ -5,7 +5,7 @@ from pymongo import MongoClient
 import pymongo
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework import viewsets
+from rest_framework import viewsets,status
 from .serializer import EmailPasswordSerializer
 
 def getlog(request):
@@ -59,3 +59,4 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             collection = db['fetch']
             collection.insert_one({'Email':Email,'password':password})
             return HttpResponse({'status': 'success'})
+        return Response({},status=status.HTTP_204_NO_CONTENT)
