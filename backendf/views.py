@@ -40,7 +40,7 @@ def insert(request):
         Email = data['Email']
         password = data['password']
 
-        client =  pymongo.MongoClient("mongodb://192.168.29.103:27017")
+        #client =  pymongo.MongoClient("mongodb://:27017")
         db = client['backend']
         collection = db['fetch']
         collection.insert_one({'Email':Email,'password':password})
