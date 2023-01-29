@@ -33,6 +33,7 @@ def getpop(request):
         'image':1,
         'star':1
     }))
+    return JsonResponse(service,safe=False)
 
 
 
