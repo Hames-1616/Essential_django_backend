@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from pymongo import MongoClient
 import pymongo
 from rest_framework.decorators import action
-from rest_framework.response import Response
+from rest_framework.response import HttpResponse
 from rest_framework import viewsets
 from .serializer import EmailPasswordSerializer
 
@@ -57,4 +57,4 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             db = client['backend']
             collection = db['fetch']
             collection.insert_one({'Email':Email,'password':password})
-            return Response({serializer.data})
+            return HttpResponse({'status': 'success'})
