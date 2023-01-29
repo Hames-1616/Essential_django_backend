@@ -1,9 +1,10 @@
 import json
 from django.http import JsonResponse
+from django.http import HttpResponse
 from pymongo import MongoClient
 import pymongo
 from rest_framework.decorators import action
-from rest_framework.response import HttpResponse
+from rest_framework.response import Response
 from rest_framework import viewsets
 from .serializer import EmailPasswordSerializer
 
