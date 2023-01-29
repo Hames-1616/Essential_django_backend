@@ -23,6 +23,20 @@ def getlog(request):
     return JsonResponse(Email_password,safe=False)
 
 
+def getpop(request):
+    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    db=client['backend']
+    collection=db['popular']
+    service=list(collection.find({},{
+        '_id':0,
+        'service':1,
+        'image':1,
+        'star':1
+    }))
+
+
+
+
 def getservices(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db=client['backend']
