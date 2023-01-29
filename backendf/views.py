@@ -51,12 +51,12 @@ class EmailPasswordViewSet(viewsets.ViewSet):
     def insert(self,request):
         serializer = EmailPasswordSerializer(data=request.data)
         if serializer.is_valid():
-            Email = serializer.validated_data['Email']
-            password = serializer.validated_data['password']
+          #  Email = serializer.validated_data['Email']
+           # password = serializer.validated_data['password']
 
             client =  pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
             db = client['backend']
             collection = db['fetch']
-            collection.insert_one({'Email':Email,'password':password})
+            collection.insert_one(serializer.validated_data)
             return HttpResponse({'status': 'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
