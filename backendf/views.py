@@ -57,4 +57,4 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             db = client['backend']
             collection = db['fetch']
             collection.insert_one({'Email':Email,'password':password})
-            return Response({'status': 'success'})
+            return Response({serializer.data})
