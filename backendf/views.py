@@ -58,5 +58,5 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             db = client['backend']
             collection = db['fetch']
             collection.insert_one(serializer.validated_data)
-            return HttpResponse({'status': 'success'})
+            return Response({'status': 'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
