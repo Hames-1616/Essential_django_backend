@@ -36,7 +36,17 @@ def getpop(request):
     return JsonResponse(service,safe=False)
 
 
-
+def getallservices(request):
+    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    db=client['backend']
+    collection=db['allservices']
+    service=list(collection.find({},
+    {
+        '_id':0,
+        'service':1,
+        'image':1
+    }))
+    return JsonResponse(service,safe=False)
 
 def getservices(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
