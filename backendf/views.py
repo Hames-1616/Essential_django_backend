@@ -18,7 +18,8 @@ def getlog(request):
     {
         '_id':0,
         'Email':1,
-        'password':1
+        'password':1,
+        'phone':1
     })) 
     return JsonResponse(Email_password,safe=False)
 
