@@ -60,6 +60,7 @@ def cleaning(request):
         'image':1,
         'star':1,
     }))
+    return JsonResponse(service,safe=False)
 
 def getservices(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
