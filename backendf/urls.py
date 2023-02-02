@@ -7,6 +7,6 @@ urlpatterns = [
     path('service/',views.getservices),
     path('allservices/',views.getallservices),
     path('popular/',views.getpop),
-    path('clean/',views.cleaning),
+    path('cleaning/',views.cleaning),
     path('insert/',EmailPasswordViewSet.as_view({'post':'insert'}))
 ]

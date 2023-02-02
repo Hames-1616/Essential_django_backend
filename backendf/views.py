@@ -58,7 +58,6 @@ def cleaning(request):
     {
         '_id':0,
         'name':1,
-        'Image':1,
         'star':1,
         'address':1
     }))
