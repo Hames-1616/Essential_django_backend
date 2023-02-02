@@ -59,6 +59,7 @@ def cleaning(request):
         'name':1,
         'Image':1,
         'star':1,
+        'address':1
     }))
     return JsonResponse(service,safe=False)
 
