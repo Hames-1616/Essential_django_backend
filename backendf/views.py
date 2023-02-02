@@ -57,7 +57,7 @@ def cleaning(request):
     {
         '_id':0,
         'name':1,
-        'image':1,
+        'Image':1,
         'star':1,
     }))
     return JsonResponse(service,safe=False)
