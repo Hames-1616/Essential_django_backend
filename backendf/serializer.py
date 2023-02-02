@@ -7,7 +7,7 @@ class EmailPasswordSerializer(serializers.Serializer):
 
 class service(serializers.Serializer):
     name = serializers.CharField()
-    star = serializers.IntegerField()
+    star = serializers.CharField()
     address = serializers.CharField()
     Email = serializers.CharField()
     phone = serializers.CharField()
