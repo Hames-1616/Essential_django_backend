@@ -6,7 +6,7 @@ import pymongo
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import viewsets,status
-from .serializer import EmailPasswordSerializer
+from .serializer import *
 
 def getlog(request):
     client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
@@ -99,4 +99,28 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             collection = db['fetch']
             collection.insert_one({'Email':Email,'password':password})
             return Response({'status': 'success'})
+        return Response({},status=status.HTTP_204_NO_CONTENT)
+
+class serviceviewset(viewsets.ViewSet):
+    @action(methods=['post'],detail=False)
+    def ins(self,request):
+        serializer = service(data=request.data)
+        if serializer.is_valid():
+            name = serializer.validated_data['name']
+            star = serializer.validated_data['star']
+            address = serializer.validated_data['address']
+            Email = serializer.validated_data['Email']
+            phone = serializer.validated_data['phone']
+
+            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            db=client['backend']
+            collection=db['cleaning']
+            collection.insert_one({
+                'name':name,
+                'star':star,
+                'address':address,
+                'Email':Email,
+                'phone':phone
+            })
+            return Response({'status':'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
