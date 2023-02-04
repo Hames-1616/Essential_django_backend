@@ -62,7 +62,8 @@ def people(request):
         'address':1,
         'Email':1,
         'phone':1,
-        'active':1
+        'active':1,
+        'description':1
     }))
     return JsonResponse(service,safe=False)
 
@@ -115,6 +116,7 @@ class serviceviewset(viewsets.ViewSet):
             Email = serializer.validated_data['Email']
             phone = serializer.validated_data['phone']
             active = serializer.validated_data['active']
+            description = serializer.validated_data['description']
 
             client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
             db=client['backend']
@@ -125,7 +127,8 @@ class serviceviewset(viewsets.ViewSet):
                 'address':address,
                 'Email':Email,
                 'phone':phone,
-                'active':active
+                'active':active,
+                'description':description
             })
             return Response({'status':'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
