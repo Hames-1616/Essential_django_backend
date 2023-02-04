@@ -50,16 +50,19 @@ def getallservices(request):
     return JsonResponse(service,safe=False)
 
 
-def cleaning(request):
+def people(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db=client['backend']
-    collection = db['cleaning']
+    collection = db['people']
     service = list(collection.find({},
     {
         '_id':0,
         'name':1,
         'star':1,
-        'address':1
+        'address':1,
+        'Email':1,
+        'phone':1,
+        'active':1
     }))
     return JsonResponse(service,safe=False)
 
@@ -111,16 +114,18 @@ class serviceviewset(viewsets.ViewSet):
             address = serializer.validated_data['address']
             Email = serializer.validated_data['Email']
             phone = serializer.validated_data['phone']
+            active = serializer.validated_data['active']
 
             client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
             db=client['backend']
-            collection=db['cleaning']
+            collection=db['people']
             collection.insert_one({
                 'name':name,
                 'star':star,
                 'address':address,
                 'Email':Email,
-                'phone':phone
+                'phone':phone,
+                'active':active
             })
             return Response({'status':'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
