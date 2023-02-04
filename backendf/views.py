@@ -41,7 +41,9 @@ def getallservices(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db=client['backend']
     collection=db['allservices']
-    service=list(collection.find({},
+    service=list(collection.find({
+        'service':'cleaning'
+    },
     {
         '_id':0,
         'service':1,
