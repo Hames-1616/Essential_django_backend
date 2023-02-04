@@ -13,3 +13,4 @@ class service(serializers.Serializer):
     phone = serializers.CharField()
     active = serializers.CharField()
     description = serializers.CharField()
+    category = serializers.CharField()
