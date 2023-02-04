@@ -11,5 +11,5 @@ class service(serializers.Serializer):
     address = serializers.CharField()
     Email = serializers.CharField()
     phone = serializers.CharField()
-    active = serializers.BooleanField()
+    active = serializers.CharField()
     description = serializers.CharField()
