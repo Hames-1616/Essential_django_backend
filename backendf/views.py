@@ -66,67 +66,7 @@ def people(request):
         'description':1,
         'category':1
     }))
-    return JsonResponse(service,safe=False)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
+    return JsonResponse(service,safe=False)    
 
 def getservices(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
@@ -158,11 +98,12 @@ class EmailPasswordViewSet(viewsets.ViewSet):
         if serializer.is_valid():
             Email = serializer.validated_data['Email']
             password = serializer.validated_data['password']
+            phone = serializer.validated_data['phone']
 
             client =  pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
             db = client['backend']
             collection = db['fetch']
-            collection.insert_one({'Email':Email,'password':password})
+            collection.insert_one({'Email':Email,'password':password,'phone':phone})
             return Response({'status': 'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
 
