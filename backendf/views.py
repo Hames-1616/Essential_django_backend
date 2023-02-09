@@ -142,7 +142,7 @@ class updateviewset(viewsets.ViewSet):
     @action(methods=['post'],detail=False)
     def update(self,request):
         serializer = updatepassword(data=request.data)
-        if serializer.is_valid:
+        if serializer.is_valid():
             Email = serializer.validated_data['Email']
             password = serializer.validate_data['password']
 
