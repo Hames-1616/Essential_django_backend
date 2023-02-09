@@ -144,7 +144,7 @@ class updateviewset(viewsets.ViewSet):
         serializer = updatepassword(data=request.data)
         if serializer.is_valid():
             Email = serializer.validated_data['Email']
-            password = serializer.validate_data['password']
+            password = serializer.validated_data['password']
 
             client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
             db= client['backend']
