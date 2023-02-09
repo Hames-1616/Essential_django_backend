@@ -136,3 +136,25 @@ class serviceviewset(viewsets.ViewSet):
             })
             return Response({'status':'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
+
+
+class updateviewset(viewsets.ViewSet):
+    @action(methods=['post'],detail=False)
+    def update(self,request):
+        serializer = updatepassword(data=request.data)
+        if serializer.is_valid:
+            Email = serializer.validated_data['Email']
+            password = serializer.validate_data['password']
+
+            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            db= client['backend']
+            collection=db['fetch']
+
+            result = collection.update_one({'Email':Email},{
+                '$set':{'password':password}
+            })
+
+            if result.modified_count==1:
+                return Response({'message':'password updated'})
+            else:
+                return Response({'message':'Failed to update the password'},status=status.HTTP_204_NO_CONTENT)

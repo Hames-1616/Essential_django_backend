@@ -9,5 +9,6 @@ urlpatterns = [
     path('popular/',views.getpop),
     path('people/',views.people),
     path('insert/',EmailPasswordViewSet.as_view({'post':'insert'})),
-    path('peoples/',serviceviewset.as_view({'post':'ins'}))
+    path('peoples/',serviceviewset.as_view({'post':'ins'})),
+    path('update/',updateviewset.as_view({'post':'update'}))
 ]

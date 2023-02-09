@@ -6,6 +6,11 @@ class EmailPasswordSerializer(serializers.Serializer):
     phone=serializers.CharField()
 
 
+class updatepassword(serializers.Serializer):
+    Email = serializers.CharField()
+    password = serializers.CharField()
+
+
 class service(serializers.Serializer):
     name = serializers.CharField()
     star = serializers.CharField()
