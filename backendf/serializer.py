@@ -20,3 +20,8 @@ class service(serializers.Serializer):
     active = serializers.CharField()
     description = serializers.CharField()
     category = serializers.CharField()
+
+
+class deleteservice(serializers.Serializer):
+    Email=serializers.CharField()
+    description = serializers.CharField()
