@@ -37,6 +37,24 @@ def getpop(request):
     return JsonResponse(service,safe=False)
 
 
+def getstar(request):
+    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    db=client['backend']
+    collection=db['star']
+
+    service=list(collection.find({},{
+        'id':0,
+        'name':1,
+        'Email':1,
+        'category':1,
+        'peopleinteract':1,
+        'total':1
+
+    }))
+    return JsonResponse(service,safe=False)
+    
+
+
 def getallservices(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db=client['backend']
