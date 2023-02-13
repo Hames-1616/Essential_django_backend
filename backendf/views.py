@@ -43,12 +43,12 @@ def getstar(request):
     collection=db['star']
 
     service=list(collection.find({},{
-        'id':0,
+        'id':1,
         'name':1,
         'Email':1,
         'category':1,
-        #'peopleinteract':1,
-        #'total':1
+        'peopleinteract':1,
+        'total':1
 
     }))
     return JsonResponse(service,safe=False)
