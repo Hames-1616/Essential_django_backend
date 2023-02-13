@@ -43,7 +43,7 @@ def getstar(request):
     collection=db['star']
 
     service=list(collection.find({},{
-        'id':1,
+        '_id':0,
         'name':1,
         'Email':1,
         'category':1,
