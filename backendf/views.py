@@ -47,8 +47,8 @@ def getstar(request):
         'name':1,
         'Email':1,
         'category':1,
-        'peopleinteract':1,
-        'total':1
+        #'peopleinteract':1,
+        #'total':1
 
     }))
     return JsonResponse(service,safe=False)
