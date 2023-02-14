@@ -20,6 +20,7 @@ class service(serializers.Serializer):
     active = serializers.CharField()
     description = serializers.CharField()
     category = serializers.CharField()
+    people = serializers.IntegerField()
 
 
 class deleteservice(serializers.Serializer):
