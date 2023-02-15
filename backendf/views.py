@@ -62,8 +62,8 @@ def review(request):
         'Email':1,
         'description':1,
         'star':1
-
     }))
+    return JsonResponse(request,safe=False)
 
 
 
