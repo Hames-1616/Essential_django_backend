@@ -169,7 +169,7 @@ class updatestar(viewsets.ViewSet):
     def updaterate(self,request):
         serializer = updatest(data=request.data)
         if serializer.is_valid():
-           # Email = serializer.validated_data['Email']
+           
             name = serializer.validated_data['name']
             category = serializer.validated_data['category']
             star = serializer.validated_data['star']
