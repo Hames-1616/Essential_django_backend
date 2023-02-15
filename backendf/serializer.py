@@ -11,6 +11,13 @@ class updatepassword(serializers.Serializer):
     password = serializers.CharField()
 
 
+class updatest(serializers.Serializer):
+    Email = serializers.CharField()
+    description = serializers.CharField()
+    star = serializers.CharField()
+    people = serializers.CharField()
+
+
 class service(serializers.Serializer):
     name = serializers.CharField()
     star = serializers.CharField()

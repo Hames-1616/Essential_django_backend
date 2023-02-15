@@ -12,5 +12,6 @@ urlpatterns = [
     path('insert/',EmailPasswordViewSet.as_view({'post':'insert'})),
     path('peoples/',serviceviewset.as_view({'post':'ins'})),
     path('update/',updateviewset.as_view({'post':'update'})),
-    path('delete/',deleteviewset.as_view({'post':'delete'}))
+    path('delete/',deleteviewset.as_view({'post':'delete'})),
+    path('updatestar/',updatestar.as_view({'post':'updaterate'}))
 ]
