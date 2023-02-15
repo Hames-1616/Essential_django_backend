@@ -170,7 +170,8 @@ class updatestar(viewsets.ViewSet):
         serializer = updatest(data=request.data)
         if serializer.is_valid():
             Email = serializer.validated_data['Email']
-            description = serializer.validated_data['description']
+            name = serializer.validated_data['name']
+            category = serializer.validated_data['category']
             star = serializer.validated_data['star']
             people = serializer.validated_data['people']
 
@@ -178,7 +179,7 @@ class updatestar(viewsets.ViewSet):
             db= client['backend']
             collection=db['people']
 
-            result = collection.update_one({'Email':Email,'description':description},{
+            result = collection.update_one({'Email':Email,'name':name,'category':category},{
                 '$set':{'star':star,'people':people}
             })
             
