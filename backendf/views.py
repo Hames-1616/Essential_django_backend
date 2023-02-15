@@ -54,7 +54,7 @@ def getallservices(request):
 def review(request):
     client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
     db=client['backend']
-    collection=db['review']
+    collection=db['reviews']
 
     request = list(collection.find({},
     {
