@@ -179,7 +179,7 @@ class updatestar(viewsets.ViewSet):
             db= client['backend']
             collection=db['people']
 
-            result = collection.update_one({'Email':Email,'name':name,'category':category},{
+            result = collection.update_one({'name':name,'category':category},{
                 '$set':{'star':star,'people':people}
             })
             
