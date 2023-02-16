@@ -71,7 +71,7 @@ def contact(request):
     db=client['backend']
     collection=db['contactus']
 
-    request = list(collection.find_one({},{
+    request = list(collection.find({},{
         '_id':0,
         'Email':1,
         'description':1
