@@ -149,7 +149,7 @@ class contactviewset(viewsets.ViewSet):
             db = client['backend']
             collection = db['contactus']
 
-            collection.insert_one({},{
+            collection.insert_one({
                 'Email':Email,
                 'description':description
             })
