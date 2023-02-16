@@ -127,6 +127,31 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             return Response({'status': 'success'})
         return Response({},status=status.HTTP_204_NO_CONTENT)
 
+
+class reviewserviceset(viewsets.ViewSet):
+    @action(methods=['post'],detail=False)
+    def place(self,request):
+        serializer = reviewservice(data=request.data)
+        if serializer.is_valid():
+            Email = serializer.validated_data['Email']
+            description = serializer.validated_data['description']
+            star = serializer.validated_data['star']
+            sent = serializer.validated_data['sent']
+            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            db=client['backend']
+            collection=db['reviews']
+
+            collection.insert_one({
+                'Email':Email,
+                'description':description,
+                'star':star,
+                'sent':sent
+            })
+            return Response({'status':'success'})
+        return Response({},status=status.HTTP_204_NO_CONTENT)
+
+
+
 class serviceviewset(viewsets.ViewSet):
     @action(methods=['post'],detail=False)
     def ins(self,request):

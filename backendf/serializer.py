@@ -30,6 +30,14 @@ class service(serializers.Serializer):
     people = serializers.CharField()
 
 
+class reviewservice(serializers.Serializer):
+    Email = serializers.CharField()
+    description = serializers.CharField()
+    star = serializers.CharField()
+    sent = serializers.CharField()
+    
+
+
 class deleteservice(serializers.Serializer):
     Email=serializers.CharField()
     description = serializers.CharField()
