@@ -41,3 +41,8 @@ class reviewservice(serializers.Serializer):
 class deleteservice(serializers.Serializer):
     Email=serializers.CharField()
     description = serializers.CharField()
+
+
+class contactservice(serializers.Serializer):
+    Email = serializers.CharField()
+    description = serializers.CharField()
