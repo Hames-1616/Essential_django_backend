@@ -66,7 +66,17 @@ def review(request):
     }))
     return JsonResponse(request,safe=False)
 
+def contact(request):
+    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    db=client['backend']
+    collection=db['contactus']
 
+    request = list(collection.find_one({},{
+        '_id':0,
+        'Email':1,
+        'description':1
+    }))
+    return JsonResponse(request,safe=False)
 
 
 def people(request):
