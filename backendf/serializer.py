@@ -37,6 +37,13 @@ class reviewservice(serializers.Serializer):
     sent = serializers.CharField()
     
 
+class updatereviewservice(serializers.Serializer):
+    name = serializers.CharField()
+    star = serializers.CharField()
+    Email =serializers.CharField()
+    category = serializers.CharField()
+
+
 
 class deleteservice(serializers.Serializer):
     Email=serializers.CharField()

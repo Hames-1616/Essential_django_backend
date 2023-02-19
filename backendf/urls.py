@@ -17,5 +17,7 @@ urlpatterns = [
     path('delete/',deleteviewset.as_view({'post':'delete'})),
     path('updatestar/',updatestar.as_view({'post':'updaterate'})),
     path('send/',reviewserviceset.as_view({'post':'place'})),
-    path('contactupdate/',contactviewset.as_view({'post':'contactset'}))
+    path('contactupdate/',contactviewset.as_view({'post':'contactset'})),
+    path('updatereview/',updatereviewset.as_view({'post':'updatereview'})),
+
 ]

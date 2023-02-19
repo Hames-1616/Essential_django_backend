@@ -238,6 +238,38 @@ class updateviewset(viewsets.ViewSet):
                 return Response({'message':'Failed to update the password'},status=status.HTTP_204_NO_CONTENT)
 
 
+class updatereviewset(viewsets.ViewSet):
+    @action(methods=['post'],detail=False)
+    def updatereview(self,request):
+        serializer = updatereviewservice(data=request.data)
+        if serializer.is_valid():
+            name = serializer.validated_data['name']
+            star = serializer.validated_data['star']
+            Email = serializer.validated_data['Email']
+            category = serializer.validated_data['category']
+
+            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            db= client['backend']
+            collection=db['people']
+
+            result = collection.update_one({
+                'name':name,
+                'Email':Email,
+                'category':category
+            },{
+                '$set': {'star':star}
+
+            })
+
+            if result.modified_count==1:
+                return Response({'message':'star updated'})
+            else:
+                return Response({},status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
 class updatestar(viewsets.ViewSet):
     @action(methods=['post'],detail=False)
     def updaterate(self,request):
