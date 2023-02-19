@@ -270,7 +270,7 @@ class insertpreviousstar(viewsets.ViewSet):
             db= client['backend']
             collection=db['previousrating']
 
-            result= collection.insert_one({
+            collection.insert_one({
                 'to':to,
                 'name':name,
                 'category':category,
@@ -307,8 +307,10 @@ class updatepreviousstar(viewsets.ViewSet):
                    'star':star 
                 }
             })
-            return Response({'status':'success'})
-        return Response({},status=status.HTTP_204_NO_CONTENT)
+            if result.modified_count==1:
+                return Response({'message':'password updated'})
+            else:
+                return Response({'message':'Failed to update the password'},status=status.HTTP_204_NO_CONTENT)
 
 
 
