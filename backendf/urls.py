@@ -20,5 +20,7 @@ urlpatterns = [
     path('send/',reviewserviceset.as_view({'post':'place'})),
     path('contactupdate/',contactviewset.as_view({'post':'contactset'})),
     path('updatereview/',updatereviewset.as_view({'post':'updatereview'})),
+    path('insertprevious/',insertpreviousstar.as_view({'post':'insertprevious'})),
+    path('updateprevious/',updatepreviousstar.as_view({'post':'updateprevious'}))
 
 ]

@@ -255,6 +255,65 @@ class updateviewset(viewsets.ViewSet):
                 return Response({'message':'Failed to update the password'},status=status.HTTP_204_NO_CONTENT)
 
 
+class insertpreviousstar(viewsets.ViewSet):
+    @action(methods=['post'],detail=False)
+    def insertprevious(self,request):
+        serializer = previousstarservice(data=request.data)
+        if serializer.is_valid():
+            to = serializer.validated_data['to']
+            name = serializer.validated_data['name']
+            category = serializer.validated_data['category']
+            star = serializer.validated_data['star']
+            by= serializer.validated_data['by']
+
+            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            db= client['backend']
+            collection=db['previousrating']
+
+            result= collection.insert_one({
+                'to':to,
+                'name':name,
+                'category':category,
+                'star':star,
+                'by':by
+            })
+            return Response({'status':'success'})
+        return Response({},status=status.HTTP_204_NO_CONTENT)
+
+
+class updatepreviousstar(viewsets.ViewSet):
+    @action(methods=['post'],detail=False)
+    def updateprevious(self,request):
+        serializer = previousstarservice(data=request.data)
+        if serializer.is_valid():
+            to = serializer.validated_data['to']
+            name = serializer.validated_data['name']
+            category = serializer.validated_data['category']
+            star = serializer.validated_data['star']
+            by= serializer.validated_data['by']
+
+            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            db= client['backend']
+            collection=db['previousrating']
+
+            result= collection.update_one({
+                'to':to,
+                'name':name,
+                'category':category,
+                'by':by
+            },
+            {
+                '$set':{
+                   'star':star 
+                }
+            })
+            return Response({'status':'success'})
+        return Response({},status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
 class updatereviewset(viewsets.ViewSet):
     @action(methods=['post'],detail=False)
     def updatereview(self,request):
