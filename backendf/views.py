@@ -334,7 +334,7 @@ class updatepreviousstar(viewsets.ViewSet):
                 }
             })
             if result.modified_count==1:
-                return Response({'message':'password updated'})
+                return Response({'message':'star updated'})
             else:
                 return Response({'message':'Failed to update the password'},status=status.HTTP_204_NO_CONTENT)
 
