@@ -8,8 +8,10 @@ from rest_framework.response import Response
 from rest_framework import viewsets,status
 from .serializer import *
 
+railway ="mongodb://mongo:6FDyVOhuyOkB5DIujRLZ@containers-us-west-145.railway.app:6554"
+
 def getlog(request):
-    client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client = pymongo.MongoClient(railway)
     db = client['backend']
     collection = db['fetch']
     Email_password = list(collection.find({
@@ -25,7 +27,7 @@ def getlog(request):
 
 
 def getpop(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection=db['popular']
     service=list(collection.find({},{
@@ -39,7 +41,7 @@ def getpop(request):
     
 
 def getallservices(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection=db['allservices']
     service=list(collection.find({},
@@ -52,7 +54,7 @@ def getallservices(request):
 
 
 def review(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection=db['reviews']
 
@@ -67,7 +69,7 @@ def review(request):
     return JsonResponse(request,safe=False)
 
 def contact(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection=db['contactus']
 
@@ -81,7 +83,7 @@ def contact(request):
 
 
 def previousreview(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection=db['previousrating']
 
@@ -97,7 +99,7 @@ def previousreview(request):
 
 
 def people(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection = db['people']
     service = list(collection.find({},
@@ -116,7 +118,7 @@ def people(request):
     return JsonResponse(service,safe=False)    
 
 def getservices(request):
-    client=pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+    client=pymongo.MongoClient(railway)
     db=client['backend']
     collection=db['services']
     service=list(collection.find({},
@@ -147,7 +149,7 @@ class EmailPasswordViewSet(viewsets.ViewSet):
             password = serializer.validated_data['password']
             phone = serializer.validated_data['phone']
 
-            client =  pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client =  pymongo.MongoClient(railway)
             db = client['backend']
             collection = db['fetch']
             collection.insert_one({'Email':Email,'password':password,'phone':phone})
@@ -162,7 +164,7 @@ class contactviewset(viewsets.ViewSet):
             Email = serializer.validated_data['Email']
             description = serializer.validated_data['description']
 
-            client =  pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client =  pymongo.MongoClient(railway)
             db = client['backend']
             collection = db['contactus']
 
@@ -185,7 +187,7 @@ class reviewserviceset(viewsets.ViewSet):
             description = serializer.validated_data['description']
             star = serializer.validated_data['star']
             sent = serializer.validated_data['sent']
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db=client['backend']
             collection=db['reviews']
 
@@ -208,7 +210,7 @@ class updatereviewserviceset(viewsets.ViewSet):
             description = serializer.validated_data['description']
             star = serializer.validated_data['star']
             sent = serializer.validated_data['sent']
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db=client['backend']
             collection=db['reviews']
 
@@ -241,7 +243,7 @@ class serviceviewset(viewsets.ViewSet):
             category = serializer.validated_data['category']
             people = serializer.validated_data['people']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db=client['backend']
             collection=db['people']
             collection.insert_one({
@@ -267,7 +269,7 @@ class updateviewset(viewsets.ViewSet):
             Email = serializer.validated_data['Email']
             password = serializer.validated_data['password']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db= client['backend']
             collection=db['fetch']
 
@@ -292,7 +294,7 @@ class insertpreviousstar(viewsets.ViewSet):
             star = serializer.validated_data['star']
             by= serializer.validated_data['by']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db= client['backend']
             collection=db['previousrating']
 
@@ -318,7 +320,7 @@ class updatepreviousstar(viewsets.ViewSet):
             star = serializer.validated_data['star']
             by= serializer.validated_data['by']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db= client['backend']
             collection=db['previousrating']
 
@@ -352,7 +354,7 @@ class updatereviewset(viewsets.ViewSet):
             Email = serializer.validated_data['Email']
             category = serializer.validated_data['category']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db= client['backend']
             collection=db['people']
 
@@ -385,7 +387,7 @@ class updatestar(viewsets.ViewSet):
             star = serializer.validated_data['star']
             people = serializer.validated_data['people']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db= client['backend']
             collection=db['people']
 
@@ -408,7 +410,7 @@ class deleteviewset(viewsets.ViewSet):
             Email = serializer.validated_data['Email']
             description = serializer.validated_data['description']
 
-            client = pymongo.MongoClient("mongodb://mongo:gMY3Fk2HOYV7veSfDFYG@containers-us-west-145.railway.app:6554")
+            client = pymongo.MongoClient(railway)
             db= client['backend']
             collection=db['people']
 
