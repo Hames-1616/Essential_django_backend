@@ -10,6 +10,7 @@ urlpatterns = [
     path('people/',views.people),
     path('review/',views.review),
     path('contact/',views.contact),
+    path('homeimage/',views.getimg),
     path('previousstar/',views.previousreview),
     #path('star/',views.getstar),
     path('insert/',EmailPasswordViewSet.as_view({'post':'insert'})),

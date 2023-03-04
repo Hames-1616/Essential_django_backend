@@ -25,6 +25,28 @@ def getlog(request):
     })) 
     return JsonResponse(Email_password,safe=False)
 
+def getimg(request):
+    client = pymongo.MongoClient(railway)
+    db = client['backend']
+    collection = db['homeimages']
+    images = list(collection.find({
+
+    },
+    {
+        '1':1,
+        '2':1,
+        '3':1,
+        '4':1,
+        '5':1,
+        '_id':0
+    }))
+    return JsonResponse(images,safe=False)
+
+
+
+
+
+
 
 def getpop(request):
     client=pymongo.MongoClient(railway)
