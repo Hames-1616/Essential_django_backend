@@ -8,7 +8,7 @@ from rest_framework.response import Response
 from rest_framework import viewsets,status
 from .serializer import *
 
-railway ="mongodb://mongo:6FDyVOhuyOkB5DIujRLZ@containers-us-west-145.railway.app:6554"
+railway ="mongodb://mongo:RcwTjBM9oCZZ0e14PmbV@containers-us-west-145.railway.app:6554"
 
 def getlog(request):
     client = pymongo.MongoClient(railway)
